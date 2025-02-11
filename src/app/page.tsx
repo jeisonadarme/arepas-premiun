@@ -2,14 +2,13 @@
 
 import { useEffect, useState } from "react";
 
-import { Carousel } from "@/components/carousel";
 import Image from "next/image";
 import Link from 'next/link'
 import { Product } from "@/types";
 import { getAllProducts } from "@/lib/product-api";
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     getAllProductsAsync();

@@ -18,7 +18,7 @@ export default function Details({ params }: {
             const { slug } = param;
             getAllProductAsync(slug);
         });
-    }, []);
+    }, [params]);
 
     const getAllProductAsync = async (slug: string) => {
         const product = await getProduct(slug);

@@ -1,3 +1,5 @@
+import { ApiResponse } from "@/types";
+
 const PRODUCT_GRAPHQL_FIELDS = `
   sys {
     id
@@ -14,7 +16,7 @@ const PRODUCT_GRAPHQL_FIELDS = `
   }
 `;
 
-async function fetchGraphQL(query: any, preview = false) {
+async function fetchGraphQL(query: string, preview = false) : Promise<ApiResponse> {
     return fetch(
      `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`,
       {
@@ -37,7 +39,7 @@ async function fetchGraphQL(query: any, preview = false) {
     ).then((response) => response.json());
 }
 
-function extractProductEntries(fetchResponse: any) {
+function extractProductEntries(fetchResponse: ApiResponse) {
     return fetchResponse?.data?.productsCollection?.items;
   }
   
